@@ -6,7 +6,7 @@
    transitions leading to both lights not blinking, one light blinking, the
    other light blinking, or both lights blinking?
 
-![Turn Signal State Machine](img/turn-signal-state-machine.jpg)
+![Turn Signal State Machine](https://imgur.com/a/1nv4gEQ)
 
 ## Regular Expressions
 
