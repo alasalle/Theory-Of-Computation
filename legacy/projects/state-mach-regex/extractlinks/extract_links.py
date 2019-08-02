@@ -16,10 +16,7 @@ source_code = html_file.read()
 
 
 # Set up regex
-matches = re.findall('[\"\'](http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)[\"\']', source_code)
-
-# for item in matches:
-#   print(item)
+matches = re.findall(r"https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&;\/\/=]*)", source_code)
 
 
 # Find links using regex, save in list called 'matches'
@@ -35,12 +32,7 @@ with open('answers.txt') as csvfile:
 
     for row in readCSV:
       for link in row:
-        # if link not in matches:
-        #   print(f"Link not found in matches: {link}")
         answer_data.append(link)
-
-for item in answer_data:
-  print(item)
 
 # Compare answers with matches found using regex, print out any mismatches
 # UNCOMMENT BELOW WHEN READY TO CHECK IF YOUR REGEX IS FINDING ALL THE LINKS
@@ -52,4 +44,4 @@ else:
     if( matches[i] != answer_data[i] ):
       result = "Mismatched link. Got %s but expected %s" % ( matches[i], answer_data[i] )
       break
-print( result )
+print(result)
