@@ -3,18 +3,21 @@ import re # module for processing regular expressions https://docs.python.org/3/
 # Initial prompt to user
 line = input("Enter a phone number to validate or 'exit' when done. ")
 
-# TODO Define your regex
-
+# Define your regex
 
 while line != "exit":
-    # TODO Find matches
-
+    # Find matches
+    match = re.finditer(r'(?:\(?(?:(?P<areacode>[0-9]{3})\)?))(-| ?)(?:(?P<prefix>[0-9]{3})(-| ?)(?P<suffix>[0-9]{4}))', line)
     
-    # TODO If no match found, print that no number was found
-   
+    # If no match found, print that no number was found
+    if not match:
+        print("No number found!")
    
     
-    # TODO Else, break number up into area code, prefix, and suffic
+    # Else, break number up into area code, prefix, and suffic
+    else:
+        for m in match:
+             print(f"Area Code: {m.group('areacode')}\nPrefix: {m.group('prefix')}\nSuffix: {m.group('suffix')}")
     
     
     # As a stretch goal, you can modify your regex to search for country codes
